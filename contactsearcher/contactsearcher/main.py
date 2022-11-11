@@ -1,7 +1,7 @@
 """Define the command-line interface for the contact searching program."""
 
-# TODO: Add all of the required import statements to this module
-
+import typer # TODO: Add all of the required import statements to this module
+import search
 # TODO: create a Typer object to support the command-line interface
 
 
