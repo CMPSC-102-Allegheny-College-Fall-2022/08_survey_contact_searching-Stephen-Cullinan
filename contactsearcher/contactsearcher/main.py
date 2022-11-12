@@ -1,9 +1,20 @@
 """Define the command-line interface for the contact searching program."""
 
-import typer # TODO: Add all of the required import statements to this module
-import search
-# TODO: create a Typer object to support the command-line interface
 
+from asyncore import read
+from importlib.resources import contents
+from rich.console import Console
+from typing import Optional
+from pathlib import Path
+
+import typer
+from contactsearcher import search
+from os.path import exists
+
+from logging import exception
+
+
+cli = typer.Typer() # create a Typer object to support the command-line interface
 
 @cli.command()
 def contactsearcher(
@@ -21,6 +32,7 @@ def contactsearcher(
     # --> the file was specified and it is valid so we should read and check it
     if contacts_file.is_file():
         contacts_text = contacts_file.read_text()
+        contacts_text = contacts_text.lower() #removes issue of case sensitivity
         contacts_line_count = len(contacts_text.splitlines())
         typer.echo(
             f"The contacts file contains {contacts_line_count} people in it! Let's get searching!"
@@ -33,9 +45,16 @@ def contactsearcher(
     typer.echo(
         f'  We are looking for contacts who have a job related to "{job_description}":'
     )
-    # TODO: perform the search for all of the relevant email addresses given the job description
-    # TODO: we know that there are some contacts in the list, so iterate through the list of
+    job_description = job_description.lower() #removes issue of case sensitivity
+    Job_List = search.search_for_email_given_job(job_description, contacts_text)# perform the search for all of the relevant email addresses given the job description
+    print("\n")
+    for item in Job_List: # we know that there are some contacts in the list, so iterate through the list of
+        name_str = item[: item.find(",")]  # get the name, located before first comma
+        job_str = item[item.find(",") + 1 :].replace('"', "") #get the job title
+        
+        print(f"{name_str} is a {job_str}") #print results
+    print("\n")
+    print("Wow, we found some contacts! Email them to learn about your job!")
     # the contacts and display them in the terminal window
-    # TODO: display final information about the program's behavior in the terminal window;
-    # this should summarize whether or not the program found any matches
-    # TODO: refer to the expected output on Discord and/or Proactive Programmers for details
+        
+
