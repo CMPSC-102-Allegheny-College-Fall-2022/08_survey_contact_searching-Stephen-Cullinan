@@ -60,6 +60,7 @@ shawkins@watson.com,Science writer"""
     contacts_list = search.search_for_email_given_job("neer", contacts_database)
     assert len(contacts_list) == 2
 
+
 def test_search_for_email_given_job():
     contacts_database = """kylebarnes@hotmail.com,Records manager
 joe70@yahoo.com,Network engineer
