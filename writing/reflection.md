@@ -1,11 +1,5 @@
 # Contact Searching
 
-TODO: Make sure that you delete all of the TODO markers and the written prompts
-from this document. You should also ensure that the document does not have any
-mistakes in spelling, grammar, or the syntax of Markdown. Ultimately, the final
-version of your reflection should be a polished document that is suitable for
-publication on your web site.
-
 ## Stephen Cullinan
 
 ## Program Output
@@ -77,7 +71,7 @@ Wow, we found some contacts! Email them to learn about your job!
   from contactsearcher import search
   }
   ```
-TODO: Write at least one paragraph to explain the request source code
+This line of code applies the code that exists within the search.py program in the contactsearcher folder. This allows for the function 'search_for_email_given_job' available to be called within the main.py program.
 
 #### The source code statement that extracts the current job description for a contact
 
@@ -86,7 +80,7 @@ TODO: Write at least one paragraph to explain the request source code
   job_str = item[item.find(",") + 1 :].replace('"', "")
   }
   ```
-TODO: Write at least one paragraph to explain the request source code
+This line of code extracts the job description for a given contact. Essentially it identifies the ',' within an item in the list. Then takes all information beyond that ','. The '.replace' portion of it then removes the ',' from the output so you are left with only the job description.
 
 #### Invocation of the function called `search_for_email_given_job`
 
@@ -95,7 +89,7 @@ TODO: Write at least one paragraph to explain the request source code
    Job_List = search.search_for_email_given_job(job_description, contacts_text)
   }
   ```
-TODO: Write at least one paragraph to explain the request source code
+This line of code calls the 'search_for_email_given_job' from the 'search.py' program within the main.py program. It utilizes the values 'job_desription' and 'contacts_text' which were retrieved from the initiation of the program. The job_decription is directly inputted by the user, and the contact_text was obtained from the .txt file identified by the user.
 
 #### Test case for the function called `search_for_email_given_job`
 
@@ -110,17 +104,12 @@ def test_search_for_email_given_job():
     assert len(contacts_list) == 1
   }
   ```
-TODO: Write at least one paragraph to explain the request source code
+This test case creates a list of contacts and job descriptions, then calls for the function to run through the list looking for a match of 'writer'. The test then checks to see if the length of the produced list is == 1 (only one contact matching). This would imply that the program is working properly.
 
 #### Execute trace of the `contactsearcher` program
 
-TODO: Explain each function call that takes place for the following run of the program
-TODO: Write at least one paragraph to explain every function call when running `contactsearcher`
+The initial running of the program resulted from running the contactsearcher via poetry. The typer inputs were used when calling the 'contact_searcher' function to initialize the program. From there, a variety of built in python functions were used to prepare the .txt file to be read later on. After being prepared, the 'job_decription' and 'contact_text' was used to call the 'search_for_email_given_job' function from the 'search.py' program. Within this function there were more built in python functions used in order to separate the list and extract specific contacts within the list. Then that function returned the filtered list, which was then iterated through and printed.
 
-TODO: Your discussion should start with the invocation of the `contactsearcher`
-function in the `main` module, explain all of the subsequent function calls in
-the correct order, and then show how the program's control returns to the
-`contactsearcher` function in the `main` module.
 
 - `poetry run contactsearcher --job-description "engineer" --contacts-file input/contacts.txt`
 
@@ -128,7 +117,7 @@ the correct order, and then show how the program's control returns to the
 
 ### So far this semester, what is one area in which you have struggled? How did you overcome this challenge?
 
-TODO: Provide a one-paragraph response that answers this question in your own words.
+I have struggled with creating poetry files from scratch. There is some aspect of their initialization that just does not parse well for me. But the more times that I have done it, the more efficient I am at getting it to work. But it is still very much a work in progress.
 
 ### Based on your experiences with this project, what is one way in which you want to improve?
 

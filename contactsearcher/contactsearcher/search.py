@@ -18,6 +18,7 @@ def search_for_email_given_job(job_description: str, contacts: str) -> List[List
     contact_set = set(contact_List)  # converts initial list into a set
     job_contact = []  # creates a new empty list for specified job
     for contact in contact_set:  # iterates through set
+        #current_contact_job = contact_line[1] -- the desired line
         if (
             job_description in contact
         ):  # checks to see if the job description is mentioned in the particular string in the set
